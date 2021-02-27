@@ -23,6 +23,9 @@ module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.generators do |g|
+      g.test_framework :rspec
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
