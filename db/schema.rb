@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_02_28_054405) do
 
   create_table "weather_apis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.date "dated_on", null: false
+    t.datetime "dated_on", null: false
     t.integer "weather_id", null: false
     t.string "weather", null: false
     t.string "weather_icon", null: false

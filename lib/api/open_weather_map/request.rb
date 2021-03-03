@@ -3,9 +3,10 @@ module Api
     class Request
       attr_accessor :query
 
-      def initialize(_location_id)
+      def initialize(lat, lon)
         @query = {
-          id: 1_860_291,
+          lat: lat,
+          lon: lon,
           units: 'metric',
           appid: ENV['WEATHER_API_KEY']
         }
@@ -13,19 +14,19 @@ module Api
 
       def request
         client = HTTPClient.new
-        request = client.get(ENV['WEATHER_API_KEY'][:uri], query)
+        request = client.get(ENV['URI'], query)
         JSON.parse(request.body)
       end
 
+        # attrsにはlib/tasks/open_weather_api.rakeの(response['daily'])が入る
       def self.attributes_for(attrs)
-        date = attrs['dt_txt'].in_time_zone('UTC').in_time_zone
+        date = Time.at(attrs[0]['dt'])
         {
           dated_on: date,
-          weather_id: attrs['weather'][0]['id'],
-          weather: attrs['main']['weather.description'],
-          weather_icon: attrs['main']['weather.icon'],
-          temperature: attrs['main']['temp.day'],
-          aquired_at: Time.current
+          weather_id: attrs[0]['weather'][0]['id'],
+          weather: attrs[0]['weather'][0]['description'],
+          weather_icon: attrs[0]['weather'][0]['icon'],
+          temperature: attrs[0]['temp']['day'],
         }
       end
     end
