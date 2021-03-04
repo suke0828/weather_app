@@ -6,7 +6,7 @@ namespace :open_weather_api do
     response = open_weather.request
         # 1日の天気を保存
     params = Api::OpenWeatherMap::Request.attributes_for(response['daily'])
-    if weather_api == WeatherApi.where(dated_on: params[:dated_on]).presence
+    if (weather_api = WeatherApi.where(dated_on: params[:dated_on]).presence)
       weather_api[0].update!(params)
       puts 'update!'
     else
