@@ -64,6 +64,7 @@ Layout/LineLength:
   Max: 150
 
 Metrics/AbcSize:
+  Max: 20
   Exclude:
     - 'lib/tasks/dev.rake'
 
