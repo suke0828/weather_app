@@ -6,6 +6,7 @@ class CreateWeatherApis < ActiveRecord::Migration[6.1]
       t.string :weather, null: false
       t.string :weather_icon, null: false
       t.float :temperature, null: false
+      t.integer :city_id, null: false
 
       t.timestamps
     end

@@ -1,17 +1,19 @@
 namespace :open_weather_api do
   desc 'Requests and save in database'
   task weather_apis: :environment do
-    open_weather = Api::OpenWeatherMap::Request.new(35.4658, 139.6224)
-      # リクエスト上限：60回/min
-    response = open_weather.request
+    City.all.each do |city|
+      open_weather = Api::OpenWeatherMap::Request.new(city.lat, city.lon)
+        # リクエスト上限：60回/min
+      response = open_weather.request
         # 1日の天気を保存
-    params = Api::OpenWeatherMap::Request.attributes_for(response['daily'])
-    if (weather_api = WeatherApi.where(dated_on: params[:dated_on]).presence)
-      weather_api[0].update!(params)
-      puts 'update!'
-    else
-      WeatherApi.create!(params)
-      puts 'completed!'
+      params = Api::OpenWeatherMap::Request.attributes_for(response['daily'])
+      if (weather_api = WeatherApi.where(city: city, dated_on: params[:dated_on]).presence)
+        weather_api[0].update!(params)
+        puts "update!#{city.id}/47"
+      else
+        city.weather_apis.create!(params)
+        puts "completed!#{city.id}/47"
+      end
     end
   end
 end

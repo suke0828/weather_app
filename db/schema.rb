@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_055516) do
     t.string "weather", null: false
     t.string "weather_icon", null: false
     t.float "temperature", null: false
+    t.integer "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
