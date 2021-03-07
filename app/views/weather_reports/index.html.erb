@@ -1,0 +1,9 @@
+<ul>
+  <% @weather_reports.each do |report| %>
+  <li>
+    <%= report.dated_on %>
+    <%= report.weather %>
+    <%= report.temperature %>
+  </li>
+  <% end %>
+</ul>

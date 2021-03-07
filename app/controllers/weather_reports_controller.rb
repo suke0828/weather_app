@@ -1,3 +1,5 @@
 class WeatherReportsController < ApplicationController
-  def index; end
+  def index
+    @weather_reports = WeatherApi.all
+  end
 end
