@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'weather_reports#index'
-  resources :weather_reports
+  root 'prefectures#index'
+  resources :prefectures, only: %i[index show]
 end

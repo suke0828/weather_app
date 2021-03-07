@@ -1,0 +1,7 @@
+<ul>
+	<% @prefectures.each do |prefecture| %>
+	<li>
+		<%= link_to prefecture.name, prefecture_path(prefecture) %>
+	</li>
+	<% end %>
+</ul>
