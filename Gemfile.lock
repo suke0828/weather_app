@@ -78,6 +78,10 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -95,6 +99,9 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
+    i18n_generators (2.2.2)
+      activerecord (>= 3.0.0)
+      railties (>= 3.0.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     listen (3.4.1)
@@ -256,9 +263,11 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara
+  database_cleaner-active_record
   dotenv-rails
   factory_bot_rails
   httpclient
+  i18n_generators
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mysql2 (~> 0.5)

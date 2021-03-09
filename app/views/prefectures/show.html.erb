@@ -1,16 +1,17 @@
 <%= provide(:title, @prefecture.name) %>
 <h1> <%=@prefecture.name%> </h1>
-<ul>
-	<% @weather_reports.each do |weather_report| %>
-	<li>
-		ID: <%= weather_report.id %>
-		日付: <%= weather_report.dated_on %>
-		天気ID: <%= weather_report.weather_id %>
-		天気: <%= weather_report.weather %>
-		天気icon: <%= weather_report.weather_icon %>
-		気温: <%= weather_report.temperature %>
-		city_id: <%= weather_report.city_id %>
-	</li>
-	<%end%>
-</ul>
+<div>
+	<ul>
+		<% @weather_reports.each do |weather_report| %>
+		<li> ID: <%= weather_report.id %>
+			日付: <%= l weather_report.dated_on, format: :short %>
+			天気ID: <%= weather_report.weather_id %>
+			天気: <%= weather_report.weather %>
+			天気icon: <img src="http://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png">
+			気温: <%= weather_report.temperature %>
+			city_id: <%= weather_report.city_id %>
+		</li>
+		<%end%>
+	</ul>
+</div>
 <div> <%= link_to '戻る', prefectures_path %> </div>
