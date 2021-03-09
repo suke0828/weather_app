@@ -16,7 +16,8 @@ RSpec.describe 'Prefectures', type: :request do
   end
 
   describe 'GET /show' do
-    city = FactoryBot.create(:city)
+    let!(:city) { FactoryBot.create(:city) }
+
     it 'gets show' do
       get prefecture_path city.id
       expect(response).to have_http_status(:ok)
