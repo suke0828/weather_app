@@ -8,6 +8,7 @@ module Api
           lat: lat,
           lon: lon,
           units: 'metric',
+          lang: 'ja',
           appid: ENV['WEATHER_API_KEY']
         }
       end

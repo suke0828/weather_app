@@ -1,17 +1,36 @@
 <%= provide(:title, @prefecture.name) %>
-<h1> <%=@prefecture.name%> </h1>
-<div>
-	<ul>
-		<% @weather_reports.each do |weather_report| %>
-		<li> ID: <%= weather_report.id %>
-			日付: <%= l weather_report.dated_on, format: :short %>
-			天気ID: <%= weather_report.weather_id %>
-			天気: <%= weather_report.weather %>
-			天気icon: <img src="http://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png">
-			気温: <%= weather_report.temperature %>
-			city_id: <%= weather_report.city_id %>
-		</li>
-		<%end%>
-	</ul>
+<div class="container-fluid">
+	<h1 class="mt-4"> <%=@prefecture.name%> </h1>
+	<ol class="breadcrumb mb-4">
+		<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
+		<li class="breadcrumb-item active"><%=@prefecture.name%></li>
+	</ol>
 </div>
-<div> <%= link_to '戻る', prefectures_path %> </div>
+<div class="card mb-4">
+	<div class="card-header">
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>日付</th>
+						<th>天気</th>
+						<th>天気icon</th>
+						<th>気温</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @weather_reports.each do |weather_report| %>
+					<tr>
+						<td><%= l weather_report.dated_on, format: :short %></td>
+						<td><%= weather_report.weather %></td>
+						<td><img src="http://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png"></td>
+						<td><%= weather_report.temperature %>℃</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div> <%= link_to '戻る', prefectures_path %> </div>
