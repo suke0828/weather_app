@@ -1,8 +1,138 @@
 <%= provide(:title, '都道府県一覧') %>
-<ul>
-	<% @prefectures.each do |prefecture| %>
-	<li>
-		<%= link_to prefecture.name, prefecture_path(prefecture) %>
-	</li>
-	<% end %>
-</ul>
+<div class="card mb-4" id="accordionExample">
+	<div class="card-header">
+		<div class="card-body">
+			<div class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+				aria-expanded="false" aria-controls="collapseOne">
+				北海道・東北
+			</div>
+			<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<% @prefectures.each do |prefecture| %>
+					<% case prefecture.id when 1..7 %>
+					<li>
+						<%= link_to prefecture.name, prefecture_path(prefecture) %>
+					</li>
+					<hr />
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+				aria-expanded="false" aria-controls="collapseTwo">
+				関東
+			</div>
+			<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<% @prefectures.each do |prefecture| %>
+					<% case prefecture.id when 8..14 %>
+					<li>
+						<%= link_to prefecture.name, prefecture_path(prefecture) %>
+					</li>
+					<hr />
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+				aria-expanded="false" aria-controls="collapseThree">
+				中部
+			</div>
+			<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<% @prefectures.each do |prefecture| %>
+					<% case prefecture.id when 15..23 %>
+					<li>
+						<%= link_to prefecture.name, prefecture_path(prefecture) %>
+					</li>
+					<hr />
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+				aria-expanded="false" aria-controls="collapseFour">
+				近畿
+			</div>
+			<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<% @prefectures.each do |prefecture| %>
+					<% case prefecture.id when 24..30 %>
+					<li>
+						<%= link_to prefecture.name, prefecture_path(prefecture) %>
+					</li>
+					<hr />
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<div>
+				<div class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+					aria-expanded="false" aria-controls="collapseFive">
+					中国
+				</div>
+			</div>
+			<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<% @prefectures.each do |prefecture| %>
+					<% case prefecture.id when 31..35 %>
+					<li>
+						<%= link_to prefecture.name, prefecture_path(prefecture) %>
+					</li>
+					<hr />
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<div>
+				<div class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+					aria-expanded="false" aria-controls="collapseSix">
+					四国
+				</div>
+			</div>
+			<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<% @prefectures.each do |prefecture| %>
+					<% case prefecture.id when 36..39 %>
+					<li>
+						<%= link_to prefecture.name, prefecture_path(prefecture) %>
+					</li>
+					<hr />
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<div>
+				<div class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
+					aria-expanded="false" aria-controls="collapseSeven">
+					九州
+				</div>
+			</div>
+			<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+				data-bs-parent="#accordionExample">
+				<div class="accordion-body">
+					<% @prefectures.each do |prefecture| %>
+					<% case prefecture.id when 40..47 %>
+					<li>
+						<%= link_to prefecture.name, prefecture_path(prefecture) %>
+					</li>
+					<hr />
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

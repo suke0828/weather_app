@@ -8,29 +8,31 @@
 </div>
 <div class="card mb-4">
 	<div class="card-header">
-	<div class="card-body">
-		<div class="table-responsive">
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-				<thead>
-					<tr>
-						<th>日付</th>
-						<th>天気</th>
-						<th>天気icon</th>
-						<th>気温</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @weather_reports.each do |weather_report| %>
-					<tr>
-						<td><%= l weather_report.dated_on, format: :short %></td>
-						<td><%= weather_report.weather %></td>
-						<td><img src="http://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png"></td>
-						<td><%= weather_report.temperature %>℃</td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>日付</th>
+							<th>天気</th>
+							<th>天気icon</th>
+							<th>気温</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @weather_reports.each do |weather_report| %>
+						<tr>
+							<td><%= l weather_report.dated_on, format: :short %></td>
+							<td><%= weather_report.weather %></td>
+							<td><img src="http://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png"></td>
+							<td><%= weather_report.temperature %>℃</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
+</div>
 
-	<div> <%= link_to '戻る', prefectures_path %> </div>
+<div> <%= link_to '戻る', prefectures_path %> </div>
