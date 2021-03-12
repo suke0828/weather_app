@@ -103,6 +103,10 @@ dl {
   margin-bottom: 1rem;
 }
 
+li {
+	list-style: none;
+}
+
 ol ol,
 ul ul,
 ol ul,
@@ -10237,4 +10241,3 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
-
