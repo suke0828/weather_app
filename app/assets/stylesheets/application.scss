@@ -57,6 +57,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
+  padding-top: 70px;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -3139,19 +3140,19 @@ input[type=button].btn-block {
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.25rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: #fff;
   text-align: inherit;
   white-space: nowrap;
-  background-color: transparent;
+  background-color: #192BC2;
   border: 0;
 }
 .dropdown-item:hover, .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: #1C2FD9;
 }
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
@@ -3956,6 +3957,8 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  background-color: #192BC2;
+  a {color: #fff;}
 }
 .navbar .container,
 .navbar .container-fluid,

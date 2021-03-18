@@ -4,11 +4,31 @@ RSpec.describe 'Prefectures' do
   let!(:city) { create(:city) }
   let!(:weather_api) { FactoryBot.create(:weather_api) }
 
+  before { create(:city, :kanagawa) }
+
   describe 'Views index' do
     it 'get index page title' do
       visit prefectures_path
       expect(page).to have_title('都道府県一覧 | お天気App')
-      expect(page).to have_link(city.name.to_s)
+    end
+
+    it 'get index area categories name' do
+      visit prefectures_path
+      expect(page).to have_selector('div.accordion-button', text: '北海道・東北')
+      expect(page).to have_selector('div.accordion-button', text: '関東')
+      expect(page).to have_selector('div.accordion-button', text: '中部')
+      expect(page).to have_selector('div.accordion-button', text: '近畿')
+      expect(page).to have_selector('div.accordion-button', text: '中国')
+      expect(page).to have_selector('div.accordion-button', text: '四国')
+      expect(page).to have_selector('div.accordion-button', text: '九州')
+    end
+
+    it 'get index prefectures link' do
+      visit prefectures_path
+      click_on '北海道・東北'
+      expect(page).to have_link('北海道')
+      click_on '関東'
+      expect(page).to have_link('神奈川県')
     end
   end
 
