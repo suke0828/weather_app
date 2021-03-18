@@ -26,6 +26,10 @@ Rails/FilePath:
     - 'lib/tasks/dev.rake'
     - 'spec/rails_helper.rb'
 
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
 ## `and return`の形式を利用できるようにします。基本的には、&& と || を使う
 Style/AndOr:
   Enabled: false
@@ -88,6 +92,7 @@ Metrics/MethodLength:
 
 Metrics/ModuleLength:
   CountComments: false
+  Max: 120
 
 Naming/FileName:
   Exclude:
