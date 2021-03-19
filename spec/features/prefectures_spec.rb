@@ -14,7 +14,10 @@ RSpec.describe 'Prefectures' do
 
     it 'get index area categories name' do
       visit prefectures_path
-      expect(page).to have_selector('div.accordion-button', text: '北海道・東北')
+      expect(page).to have_selector(
+        'div.accordion-button',
+        text: '北海道・東北'
+      )
       expect(page).to have_selector('div.accordion-button', text: '関東')
       expect(page).to have_selector('div.accordion-button', text: '中部')
       expect(page).to have_selector('div.accordion-button', text: '近畿')
@@ -52,6 +55,18 @@ RSpec.describe 'Prefectures' do
       expect(page).to have_selector(
         "img[src$='http://openweathermap.org/img/w/#{weather_api.weather_icon}.png']"
       )
+    end
+  end
+
+  describe 'Views header footer' do
+    it 'get header' do
+      visit prefectures_path
+      expect(page).to have_css('.navbar')
+    end
+
+    it 'get footer' do
+      visit prefectures_path
+      expect(page).to have_css('.footer')
     end
   end
 end
