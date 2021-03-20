@@ -92,7 +92,13 @@ Metrics/MethodLength:
 
 Metrics/ModuleLength:
   CountComments: false
-  Max: 120
+  Max: 170
+
+CyclomaticComplexity:
+  Max: 8
+
+Metrics/MethodLength:
+  Max: 16
 
 Naming/FileName:
   Exclude:

@@ -88,6 +88,25 @@ module ApplicationHelper
     raw(html_text)
   end
 
+  def weather_color(color)
+    case color.weather_id
+    when thunder_storm
+      '#770'
+    when drizzle
+      '#047'
+    when rain
+      '#007'
+    when snow
+      '#077'
+    when atmosphere
+      '#070'
+    when clear
+      '#700'
+    when clouds
+      '#777'
+    end
+  end
+
   private
 
     def area_id(range)
@@ -120,6 +139,38 @@ module ApplicationHelper
 
     def kyushu_area_id
       area_id(40..47)
+    end
+
+    def weather_info(range)
+      ->(weather_id) { range.include? weather_id }
+    end
+
+    def thunder_storm
+      weather_info(200..232)
+    end
+
+    def drizzle
+      weather_info(300..321)
+    end
+
+    def rain
+      weather_info(500..531)
+    end
+
+    def snow
+      weather_info(600..622)
+    end
+
+    def atmosphere
+      weather_info(700..781)
+    end
+
+    def clear
+      weather_info(800..800)
+    end
+
+    def clouds
+      weather_info(801..804)
     end
 
     def set_city
