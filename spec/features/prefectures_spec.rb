@@ -28,9 +28,7 @@ RSpec.describe 'Prefectures' do
 
     it 'get index prefectures link' do
       visit prefectures_path
-      click_on '北海道・東北'
       expect(page).to have_link('北海道')
-      click_on '関東'
       expect(page).to have_link('神奈川県')
     end
   end
