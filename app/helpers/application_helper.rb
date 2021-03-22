@@ -183,7 +183,9 @@ module ApplicationHelper
 
     def string_output(prefecture)
       tag.hr do
-        tag.li { tag.a(prefecture.name, href: "/prefectures/#{prefecture.id}") }
+        content_tag(:li, class:'prefectures') do
+          tag.a(prefecture.name, href: "/prefectures/#{prefecture.id}")
+        end
       end
     end
 end
