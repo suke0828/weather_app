@@ -14,10 +14,7 @@ RSpec.describe 'Prefectures' do
 
     it 'get index area categories name' do
       visit prefectures_path
-      expect(page).to have_selector(
-        'div.accordion-button',
-        text: '北海道・東北'
-      )
+      expect(page).to have_selector('div.accordion-button', text: '北海道・東北')
       expect(page).to have_selector('div.accordion-button', text: '関東')
       expect(page).to have_selector('div.accordion-button', text: '中部')
       expect(page).to have_selector('div.accordion-button', text: '近畿')
@@ -60,6 +57,13 @@ RSpec.describe 'Prefectures' do
     it 'get header' do
       visit prefectures_path
       expect(page).to have_css('.navbar')
+    end
+
+    it 'click header responsive menu' do
+      visit prefectures_path
+      expect(find('.navbar-toggler', visible: false)).to have_content('MENU')
+      click_button 'MENU'
+      expect(find('.nav-link', match: :first, visible: false)).to have_content('北海道・東北')
     end
 
     it 'get footer' do
