@@ -1,18 +1,9 @@
-<%= provide(:title, @prefecture.name) %>
 <div class="container-fluid">
 	<h1 class="mt-4"> <%=@prefecture.name%> </h1>
 	<ol class="breadcrumb mb-4">
 		<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
 		<li class="breadcrumb-item active"><%=@prefecture.name%></li>
 	</ol>
-</div>
-<div>
-<h6 class="font-italic">過去ログ</h6>
-<ul>
-	<% @archives.each do |yyyymm, count| %>
-	<li><%= link_to ymconv(yyyymm, count.to_s), prefecture_archive_path(@prefecture, yyyymm) %></li>
-	<% end %>
-</ul>
 </div>
 <div class="card mb-4">
 	<div class="card-header">
@@ -27,14 +18,19 @@
 							<th>気温</th>
 						</tr>
 					</thead>
+						<% if @weather_archives.blank? %>
+						<p><%=@beginning_month%>~<%= @end_month%> No Contents</p>
+						<% else %>
+						<p><%=@weather_archives.count%>days</p>
+						<% end %>
 					<tbody>
-						<% @weather_reports.each do |weather_report| %>
-						<tr style="color: <%= weather_color(weather_report)%>">
-							<td class="border-left"><%= l weather_report.dated_on, format: :short %></td>
-							<td class="border-none"><%= weather_report.weather %></td>
-							<td class="border-none"><img src="http://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png">
+						<% @weather_archives.each do |archive| %>
+						<tr style="color: <%= weather_color(archive)%>">
+							<td class="border-left"><%= l archive.dated_on, format: :short %></td>
+							<td class="border-none"><%= archive.weather %></td>
+							<td class="border-none"><img src="http://openweathermap.org/img/w/<%=archive.weather_icon%>.png">
 							</td>
-							<td class="border-right"><%= weather_report.temperature %>℃</td>
+							<td class="border-right"><%= archive.temperature %>℃</td>
 						</tr>
 						<% end %>
 					</tbody>
