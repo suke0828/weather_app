@@ -107,6 +107,10 @@ module ApplicationHelper
     end
   end
 
+  def ymconv(yyyymm, cnt)
+    "#{yyyymm}(#{cnt})"
+  end
+
   private
 
     def area_id(range)
