@@ -41,7 +41,7 @@ RSpec.describe 'Prefectures', type: :request do
 
     it 'not archive contents' do
       get prefecture_archive_path city.id, yyyymm: '2021/02/01 02:00:00'
-      expect(response.body).to include('2021-02-01~2021-02-28 No Contents')
+      expect(response.body).to include('2021-02-01...2021-02-28 No Contents')
       expect(response.body).not_to include('1days')
     end
   end
