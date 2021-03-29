@@ -1,24 +1,31 @@
 class PrefecturesController < ApplicationController
+  include PrefecturesHelper
+
+  def prefecture
+    City.find(params[:id])
+  end
+
   def index
     @prefectures = City.all
   end
 
   def show
-    @prefecture = City.find(params[:id])
-    @archives = @prefecture.divide_monthly
-    @weather_reports =
-      @prefecture.weather_apis.where(dated_on: Time.current.all_month)
+    prefecture.weather_apis.where(dated_on: Time.current.all_month)
+  end
+
+  def archives_link
+    prefecture.divide_monthly
   end
 
   def archives
-    @prefecture = City.find(params[:id])
+    prefecture.weather_apis.where(dated_on: year_monthly)
+  end
+
+  def year_monthly
     yyyymm = params[:yyyymm]
     dd = '01'
-    @beginning_month = Date.parse("#{yyyymm}#{dd}").at_beginning_of_month
-    @end_month = Date.parse("#{yyyymm}#{dd}").end_of_month
-    @weather_archives =
-      @prefecture.weather_apis.where(
-        dated_on: @beginning_month.to_s...@end_month.to_s
-      )
+    beginning_month = Date.parse("#{yyyymm}#{dd}").at_beginning_of_month
+    end_month = Date.parse("#{yyyymm}#{dd}").end_of_month
+    beginning_month...end_month
   end
 end

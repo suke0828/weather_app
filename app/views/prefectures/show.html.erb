@@ -1,16 +1,16 @@
-<%= provide(:title, @prefecture.name) %>
+<%= provide(:title, prefecture.name) %>
 <div class="container-fluid">
-	<h1 class="mt-4"> <%=@prefecture.name%> </h1>
+	<h1 class="mt-4"> <%=prefecture.name%> </h1>
 	<ol class="breadcrumb mb-4">
 		<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
-		<li class="breadcrumb-item active"><%=@prefecture.name%></li>
+		<li class="breadcrumb-item active"><%=prefecture.name%></li>
 	</ol>
 </div>
 <div>
 <h6 class="font-italic">過去ログ</h6>
 <ul>
-	<% @archives.each do |yyyymm, count| %>
-	<li><%= link_to ymconv(yyyymm, count.to_s), prefecture_archive_path(@prefecture, yyyymm) %></li>
+	<% controller.archives_link.each do |yyyymm, count| %>
+	<li><%= link_to ymconv(yyyymm, count.to_s), prefecture_archive_path(prefecture, yyyymm) %></li>
 	<% end %>
 </ul>
 </div>
@@ -28,7 +28,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @weather_reports.each do |weather_report| %>
+						<% show.each do |weather_report| %>
 						<tr style="color: <%= weather_color(weather_report)%>">
 							<td class="border-left"><%= l weather_report.dated_on, format: :short %></td>
 							<td class="border-none"><%= weather_report.weather %></td>
