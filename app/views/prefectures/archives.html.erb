@@ -1,10 +1,6 @@
-<div class="container-fluid">
-	<h1 class="mt-4"> <%=prefecture.name%> </h1>
-	<ol class="breadcrumb mb-4">
-		<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
-		<li class="breadcrumb-item active"><%=prefecture.name%></li>
-	</ol>
-</div>
+<%= provide(:title, 'アーカイブ') %>
+<%= render 'breadcrumb' %>
+<%= render 'archives' %>
 <div class="card mb-4">
 	<div class="card-header">
 		<div class="card-body">
@@ -40,8 +36,4 @@
 	</div>
 </div>
 
-<div class="btn btn-outline-primary m-3">
-	<%= link_to prefectures_path do%>
-	<i class="fas fa-angle-left"></i> 戻る
-	<% end %>
-</div>
+<%= render 'back_button' %>

@@ -1,0 +1,8 @@
+<div>
+<h6 class="font-italic">過去ログ</h6>
+<ul>
+	<% archives_link.each do |yyyymm, count| %>
+	<li><%= link_to ymconv(yyyymm, count.to_s), prefecture_archive_path(prefecture, yyyymm) %></li>
+	<% end %>
+</ul>
+</div>

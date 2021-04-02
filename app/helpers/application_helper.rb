@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_title = '')
-    base_title = 'お天気App'
+    base_title = 'お天気HISTORY'
     page_title.empty? ? base_title : "#{page_title} | #{base_title}"
   end
 

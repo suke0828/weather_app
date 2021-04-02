@@ -44,5 +44,16 @@ RSpec.describe 'Prefectures', type: :request do
       expect(response.body).to include('2021-02-01...2021-02-28 No Contents')
       expect(response.body).not_to include('1days')
     end
+
+    it 'get archives log list' do
+      create_list(:weather_api, 5)
+      get prefecture_archive_path city.id, yyyymm: weather_api.dated_on
+      expect(response.body).to include(ymconv(weather_api.dated_on.strftime('%Y%m'), 6).to_s)
+    end
+
+    it 'not archives log list' do
+      get prefecture_archive_path city.id, yyyymm: weather_api.dated_on
+      expect(response.body).not_to include(ymconv(202_001, 1).to_s)
+    end
   end
 end
