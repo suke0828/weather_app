@@ -9,7 +9,7 @@ RSpec.describe 'Prefectures' do
   describe 'Views index' do
     it 'get index page title' do
       visit prefectures_path
-      expect(page).to have_title('都道府県一覧 | お天気App')
+      expect(page).to have_title('都道府県一覧 | お天気HISTORY')
     end
 
     it 'get index area categories name' do
@@ -33,16 +33,21 @@ RSpec.describe 'Prefectures' do
   describe 'Views show' do
     it 'get show page title' do
       visit prefecture_path city.id
-      expect(page).to have_title("#{city.name} | お天気App")
+      expect(page).to have_title("#{city.name} | お天気HISTORY")
       expect(page).to have_selector('h1', text: city.name.to_s)
       expect(page).to have_link('戻る')
     end
 
+    it 'get archives log list' do
+      visit prefecture_path city.id
+      expect(page).to have_link(ymconv(weather_api.dated_on.strftime('%Y%m'), 1).to_s)
+    end
+
     it 'display weather_api data' do
       visit prefecture_path city.id
-      expect(page).to have_content '03/05'
-      expect(page).to have_content 'broken clouds'
-      expect(page).to have_content '4.87'
+      expect(page).to have_content weather_api.dated_on.strftime('%m/%d').to_s
+      expect(page).to have_content weather_api.weather.to_s
+      expect(page).to have_content weather_api.temperature.to_s
     end
 
     it 'display weather_icon image' do
@@ -50,6 +55,23 @@ RSpec.describe 'Prefectures' do
       expect(page).to have_selector(
         "img[src$='http://openweathermap.org/img/w/#{weather_api.weather_icon}.png']"
       )
+    end
+  end
+
+  describe 'Views archives' do
+    it 'get archives page title' do
+      visit prefecture_archive_path city.id, yyyymm: weather_api.dated_on
+      expect(page).to have_title('アーカイブ | お天気HISTORY')
+    end
+
+    it 'get archives page back_button' do
+      visit prefecture_archive_path city.id, yyyymm: weather_api.dated_on
+      expect(page).to have_link('戻る')
+    end
+
+    it 'get archives log list' do
+      visit prefecture_archive_path city.id, yyyymm: weather_api.dated_on
+      expect(page).to have_link(ymconv(weather_api.dated_on.strftime('%Y%m'), 1).to_s)
     end
   end
 

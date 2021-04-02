@@ -7,5 +7,15 @@ module PrefecturesHelper
 
   delegate :archives, to: :controller
 
-  delegate :year_monthly, to: :controller
+  def prefecture
+    City.find(params[:id])
+  end
+
+  def year_monthly
+    yyyymm = params[:yyyymm]
+    dd = '01'
+    beginning_month = Date.parse("#{yyyymm}#{dd}").at_beginning_of_month
+    end_month = Date.parse("#{yyyymm}#{dd}").end_of_month
+    beginning_month...end_month
+  end
 end
