@@ -13,6 +13,10 @@ class PrefecturesController < ApplicationController
     prefecture.divide_monthly
   end
 
+  def archives_year
+    prefecture.divide_year
+  end
+
   def archives
     prefecture.weather_apis.where(dated_on: year_monthly)
   end

@@ -1,7 +1,17 @@
 <div class="container-fluid">
 	<h1 class="mt-4"> <%=prefecture.name%> </h1>
 	<ol class="breadcrumb mb-4">
+			<!-- prefectures page -->
 		<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
-		<li class="breadcrumb-item active"><%= link_to prefecture.name, prefecture_path%></li>
+				<!-- show page -->
+		<li class="breadcrumb-item"><%= link_to prefecture.name, prefecture_path%></li>
+				<!-- archive page -->
+		<li class="breadcrumb-item">
+			<% archives_link.each do |yyyymm, count| %>
+				<% if current_page?(prefecture_archive_path(prefecture, yyyymm)) %>
+					<%= link_to ymconv(yyyymm, count.to_s), prefecture_archive_path(prefecture, yyyymm) %>
+				<% end %>
+			<% end %>
+		</li>
 	</ol>
 </div>
