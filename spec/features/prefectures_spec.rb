@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Prefectures' do
   let!(:city) { create(:city) }
-  let!(:weather_api) { FactoryBot.create(:weather_api) }
+  let!(:weather_api) { create(:weather_api, city: city) }
 
   before { create(:city, :kanagawa) }
 
@@ -91,6 +91,15 @@ RSpec.describe 'Prefectures' do
     it 'get footer' do
       visit prefectures_path
       expect(page).to have_css('.footer')
+    end
+  end
+
+  describe 'Display bread crumb' do
+    it 'bread crumb prefecture page' do
+      visit prefecture_path city.id
+      expect(page).to have_selector('li[class=breadcrumb-item]', text: '都道府県')
+      expect(page).to have_selector('li[class=breadcrumb-item]', text: '北海道')
+      expect(page).not_to have_selector('li[class=breadcrumb-item]', text: ymconv(weather_api.dated_on.strftime('%Y%m'), 1).to_s)
     end
   end
 end

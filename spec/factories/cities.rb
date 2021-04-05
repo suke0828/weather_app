@@ -7,5 +7,11 @@ FactoryBot.define do
     trait :kanagawa do
       name { '神奈川県' }
     end
+
+    factory :city_with_weather_apis do
+      after(:create) do |city|
+        create_list(:weather_api, 3, city: city)
+      end
+    end
   end
 end

@@ -5,6 +5,8 @@ module PrefecturesHelper
 
   delegate :archives_link, to: :controller
 
+  delegate :archives_year, to: :controller
+
   delegate :archives, to: :controller
 
   def prefecture
