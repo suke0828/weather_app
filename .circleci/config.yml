@@ -3,7 +3,8 @@ jobs:
   build:
     docker:
     - image: circleci/ruby:3.0.0-node-browsers
-      command: mysqld --default-authentication-plugin=mysql_native_password
+      command: |
+        mysqld --default-authentication-plugin=mysql_native_password
       environment:
         - BUNDLER_VERSION: 2.2.3
         - RAILS_ENV: 'test'
