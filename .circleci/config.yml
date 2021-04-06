@@ -4,7 +4,7 @@ jobs:
     docker:
     - image: circleci/ruby:3.0.0-node-browsers
       environment:
-        - BUNDLER_VERSION: 2.0.2
+        - BUNDLER_VERSION: 2.2.3
         - RAILS_ENV: 'test'
         - MYSQL_HOST: 127.0.0.1
         - MYSQL_USERNAME: 'root'
@@ -43,7 +43,7 @@ jobs:
         name: DatabaseSetup
         command: |
           bundle exec rake db:create
-          bundle exec rake db:schema:load
+          bundle exec rake db:schema:load --trace 
 
     # run RuboCop
     - run:
