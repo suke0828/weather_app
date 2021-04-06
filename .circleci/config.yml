@@ -9,7 +9,7 @@ jobs:
         - MYSQL_HOST: 127.0.0.1
         - MYSQL_USERNAME: 'root'
         - MYSQL_PASSWORD: ''
-        - MYSQL_PORT: 4306
+        - MYSQL_PORT: 3306
     - image: circleci/mysql:8.0.23
       environment:
         - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
@@ -43,7 +43,7 @@ jobs:
         name: DatabaseSetup
         command: |
           bundle exec rake db:create
-          bundle exec rake db:schema:load --trace 
+          bundle exec rake db:schema:load
 
     # run RuboCop
     - run:
