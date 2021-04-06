@@ -2,7 +2,7 @@
   jobs:
     build:
       docker:
-        - image: circleci/node:4.8.2 # ジョブのコマンドが実行されるプライマリ コンテナ
+        - image: circleci/ruby:3.0.0 # ジョブのコマンドが実行されるプライマリ コンテナ
       steps:
         - checkout # プロジェクト ディレクトリ内のコードをチェック アウトします
         - run: echo "hello world" # `echo` コマンドを実行します
