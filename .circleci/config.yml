@@ -7,14 +7,18 @@ jobs:
       environment:
         - BUNDLER_VERSION: 2.2.3
         - RAILS_ENV: 'test'
-        - MYSQL_HOST: 127.0.0.1
-        - MYSQL_USERNAME: 'root'
-        - MYSQL_PASSWORD: ''
+        - MYSQL_HOST: 'db'
+        # - MYSQL_USERNAME: 'root'
+        - MYSQL_PASSWORD: 'password'
         - MYSQL_PORT: 3306
     - image: circleci/mysql:8.0.23
       environment:
-        - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-        - MYSQL_ROOT_HOST: '%'
+        MYSQL_USER: 'test'
+        MYSQL_ROOT_PASSWORD: 'password'
+        MYSQL_PASSWORD: 'password'
+        MYSQL_DATABASE: 'weather_test'
+        MYSQL_HOST: 'db'
+      name: db
 
     working_directory: ~/portfolio/weather
 
@@ -46,7 +50,7 @@ jobs:
         - ~/.cache/yarn
 
     # Database setup
-    - run: mv config/database.yml.ci config/database.yml
+    # - run: mv config/database.yml.ci config/database.yml
 
     - run:
         name: wait db
