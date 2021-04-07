@@ -2,9 +2,8 @@ version: 2.1
 jobs:
   build:
     docker:
-    - image: circleci/ruby:3.0.0-node-browsers
-      command: |
-        mysqld --default-authentication-plugin=mysql_native_password
+    - image: circleci/ruby:3.0.0
+      command: [--default-authentication-plugin=mysql_native_password]
       environment:
         - BUNDLER_VERSION: 2.2.3
         - RAILS_ENV: 'test'
@@ -17,7 +16,7 @@ jobs:
         - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
         - MYSQL_ROOT_HOST: '%'
 
-    working_directory: ~/weather_app
+    working_directory: ~/portfolio/weather
 
     steps:
     - checkout
@@ -26,19 +25,32 @@ jobs:
         keys:
         - v1-dependencies-{{ checksum "Gemfile.lock" }}
         - v1-dependencies-
+        - rails-demo-yarn-{{ checksum "yarn.lock" }}
+        - rails-demo-yarn-
 
     - run:
         name: install dependencies
         command: |
           bundle install --jobs=4 --retry=3
+    - run:
+        name: install yarn
+        command: yarn install --cache-folder ~/.cache/yarn
 
     - save_cache:
         paths:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+    - save_cache:
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+        paths:
+        - ~/.cache/yarn
 
     # Database setup
     - run: mv config/database.yml.ci config/database.yml
+
+    - run:
+        name: wait db
+        command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
     # Database setup
     - run:
