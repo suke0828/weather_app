@@ -60,7 +60,7 @@ jobs:
       - run:
           name: run RuboCop
           command: bundle exec rubocop
-          
+
       - run:
           name: run RSpec
           command: |
@@ -79,3 +79,26 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Heroku deploy to master
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
