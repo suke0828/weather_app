@@ -1,4 +1,11 @@
 <%= provide(:title, 'about') %>
+<div class="container-fluid">
+	<ol class="breadcrumb mb-4">
+		<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
+		<li class="breadcrumb-item"><%= link_to 'About', about_path %></li>
+	</ol>
+</div>
+
 <div class="container">
 	<h1>お天気HISTORYとは？</h1>
 	<hr />
