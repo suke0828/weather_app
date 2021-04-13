@@ -5,7 +5,7 @@
 	<div class="card-header">
 		<div class="card-body">
 			<div>
-				<table class="table" id="dataTable" width="100%">
+				<table class="table table-hover" id="dataTable" width="100%">
 					<thead>
 						<tr>
 							<th>日付</th>
@@ -14,7 +14,7 @@
 							<th>気温</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="fw-bold">
 						<% show.each do |weather_report| %>
 						<tr style="color: <%= weather_color(weather_report)%>">
 							<td class="border-left"><%= l weather_report.dated_on, format: :short %></td>
