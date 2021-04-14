@@ -1,0 +1,41 @@
+<div class="container-fluid mb-4">
+	<div class="archives-list">
+		<div class="accordion" id="accordionExample">
+			<!-- Log List -->
+			<div class="accordion-item">
+				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLog"
+					aria-expanded="false" aria-controls="collapseLog">
+					過去ログ
+				</button>
+			</div>
+			<div id="collapseLog" class="accordion-collapse collapse" aria-labelledby="headingLog">
+				<!-- Year List -->
+				<div class="accordion-item">
+					<% archives_year.each do |yyyymm, count| %>
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseYear"
+						aria-expanded="false" aria-controls="collapseYear">
+						<ul　class="m-0">
+							<li class="fw-bold"><%= ymconv(yyyymm, archives_link.size) %></li>
+						</ul>
+					</button>
+					<% end %>
+					<!-- Monthly List -->
+					<div id="collapseYear" class="accordion-collapse collapse" aria-labelledby="headingYear"
+						data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							<ul　class="m-0">
+								<% archives_link.each do |yyyymm, count| %>
+								<li class="p-3">
+									<%= link_to ymconv(yyyymm, count.to_s), prefecture_archive_path(prefecture, yyyymm) %>
+								</li>
+								<hr />
+								<% end %>
+								<hr />
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
