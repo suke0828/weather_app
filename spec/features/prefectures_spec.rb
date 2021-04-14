@@ -45,9 +45,9 @@ RSpec.describe 'Prefectures' do
 
     it 'display weather_api data' do
       visit prefecture_path city.id
-      expect(page).to have_content weather_api.dated_on.strftime('%m/%d').to_s
-      expect(page).to have_content weather_api.weather.to_s
-      expect(page).to have_content weather_api.temperature.to_s
+      expect(page).to have_content(weather_api.dated_on.strftime('%m/%d').to_s)
+      expect(page).to have_content(weather_api.weather.to_s)
+      expect(page).to have_content(weather_api.temperature.to_s)
     end
 
     it 'display weather_icon image' do
@@ -55,6 +55,16 @@ RSpec.describe 'Prefectures' do
       expect(page).to have_selector(
         "img[src$='http://openweathermap.org/img/w/#{weather_api.weather_icon}.png']"
       )
+    end
+
+    it 'render partial breadcrumb' do
+      visit prefecture_path city.id
+      expect(page).to have_css('.breadcrumb')
+    end
+
+    it 'render partial archives' do
+      visit prefecture_path city.id
+      expect(page).to have_css('.archives-list')
     end
   end
 
@@ -72,6 +82,16 @@ RSpec.describe 'Prefectures' do
     it 'get archives log list' do
       visit prefecture_archive_path city.id, yyyymm: weather_api.dated_on
       expect(page).to have_link(ymconv(weather_api.dated_on.strftime('%Y%m'), 1).to_s)
+    end
+
+    it 'render partial breadcrumb' do
+      visit prefecture_path city.id
+      expect(page).to have_css('.breadcrumb')
+    end
+
+    it 'render partial archives' do
+      visit prefecture_path city.id
+      expect(page).to have_css('.archives-list')
     end
   end
 
