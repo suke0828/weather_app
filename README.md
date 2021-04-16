@@ -1,24 +1,41 @@
 # README
+最初にアイキャッチ画像などを表示
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+-目次
+-----------------
+* [概要](お天気HISTORY)
+* [使用技術](#使用技術)
+* [インフラ構成図](#インフラ構成図)
+* [Usage](#usage)
+* [License](#license)
+* [Authors](#authors)
+* [References](#references)
 
-Things you may want to cover:
+# お天気HISTORY
+今日の天気を自動で記録します</br>
+都道府県別に過去の天気を見ることができます</br>
+簡単なデモ（使用例）などスクリーンショットやGIFアニメで表示
 
-* Ruby version
+## 使用技術
+・Ruby 3.0.0</br>
+・Rails 6.1.3.1</br>
+・MySQL 8.0.23</br>
+・Docker/Docker-compose</br>
+・CircleCI CI/CD
 
-* System dependencies
+## インフラ構成図
+・Heroku</br>
+・Heroku Scheduler</br>
+・Heroku Postgres</br>
 
-* Configuration
+## Usage
+使い方。なるべく具体的に書く。サンプルも書く
 
-* Database creation
+## License
+This software is released under the MIT License, see LICENSE.
 
-* Database initialization
+## Authors
+suke0828
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## References
+参考にした情報源（サイト・論文）などの情報、リンク
