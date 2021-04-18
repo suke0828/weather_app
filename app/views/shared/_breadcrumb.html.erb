@@ -1,34 +1,28 @@
 <div class="container-fluid">
+<h1 class="m-2 p-2"> <%=prefecture.name%> </h1>
 	<div class="breadcrumb">
+		<ol class="breadcrumb mb-0">
 		<!-- prefectures page -->
 		<% if current_page?(prefectures_path) %>
-		<h1 class="mt-4"> <%=prefecture.name%> </h1>
-		<ol class="breadcrumb mb-4">
 			<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
-		</ol>
 		<% end %>
 
 		<!-- show page -->
 		<% if current_page?(prefecture_path(prefecture)) %>
-		<h1 class="mt-4"> <%=prefecture.name%> </h1>
-		<ol class="breadcrumb mb-4">
 			<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
 			<li class="breadcrumb-item"><%= link_to prefecture.name, prefecture_path %></li>
-		</ol>
 		<% end %>
 
 		<!-- archive page -->
 		<% archives_link.each do |yyyymm, count| %>
 		<% if current_page?(prefecture_archive_path(prefecture, yyyymm)) %>
-		<h1 class="mt-4"> <%=prefecture.name%> </h1>
-		<ol class="breadcrumb mb-4">
 			<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
 			<li class="breadcrumb-item"><%= link_to prefecture.name, prefecture_path%></li>
 			<li class="breadcrumb-item">
 				<%= link_to ymconv(yyyymm, count.to_s), prefecture_archive_path(prefecture, yyyymm) %>
 			</li>
+		<% end %>
+		<% end %>
 		</ol>
-		<% end %>
-		<% end %>
 	</div>
 </div>
