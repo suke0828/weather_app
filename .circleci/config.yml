@@ -79,9 +79,6 @@ jobs:
           path: coverage
       - store_test_results:
           path: /tmp/test-results
-      - store_artifacts:
-          path: coverage
-          destination: test-results
 
   deploy:
     docker:
