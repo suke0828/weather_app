@@ -1,18 +1,4 @@
-require 'simplecov' # << simplecov が必要です
-
-# save to CircleCI's artifacts directory if we're on CircleCI
-if ENV['CIRCLE_ARTIFACTS']
-  dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
-  SimpleCov.coverage_dir(dir)
-end
-
-SimpleCov.start 'rails' # << "Rails" プリセットを使用して SimpleCov を起動します
-
-# ここのifはローカルでテスト走らせる時に実行したくないから。もっといい方法あると思う
-if ENV['CIRCLE_ARTIFACTS']
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
+require 'simplecov'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
@@ -89,6 +75,13 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  if ENV['CIRCLE_ARTIFACTS']
+    dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
+    SimpleCov.coverage_dir(dir)
+  end
+
+  SimpleCov.start
 end

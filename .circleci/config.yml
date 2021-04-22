@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@1.1.5
 
 jobs:
   build:
@@ -79,7 +82,8 @@ jobs:
           path: coverage
       - store_test_results:
           path: /tmp/test-results
-
+      - codecov/upload:
+          file: coverage/.resultset.json
   deploy:
     docker:
       - image: buildpack-deps:trusty
