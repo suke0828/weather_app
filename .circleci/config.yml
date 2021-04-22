@@ -83,7 +83,7 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
       - codecov/upload:
-          file: coverage/.resultset.json
+          file: $TEST_FILES
   deploy:
     docker:
       - image: buildpack-deps:trusty
