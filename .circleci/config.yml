@@ -12,18 +12,18 @@ jobs:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.2.3
-          RAILS_ENV: 'test'
-          MYSQL_HOST: 'db'
-          MYSQL_PASSWORD: 'password'
+          RAILS_ENV: "test"
+          MYSQL_HOST: "db"
+          MYSQL_PASSWORD: "password"
           MYSQL_PORT: 3306
       - image: circleci/mysql:8.0.23
         command: [--default-authentication-plugin=mysql_native_password]
         environment:
-          MYSQL_USER: 'test'
-          MYSQL_ROOT_PASSWORD: 'password'
-          MYSQL_PASSWORD: 'password'
-          MYSQL_DATABASE: 'weather_test'
-          MYSQL_HOST: 'db'
+          MYSQL_USER: "test"
+          MYSQL_ROOT_PASSWORD: "password"
+          MYSQL_PASSWORD: "password"
+          MYSQL_DATABASE: "weather_test"
+          MYSQL_HOST: "db"
         name: db
     parallelism: 1
     working_directory: ~/weather
@@ -78,12 +78,14 @@ jobs:
               --format progress \
               $TEST_FILES
 
-      - store_artifacts:
-          path: coverage
       - store_test_results:
           path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: coverage
       - codecov/upload:
-          file: coverage/.resultset.json
+          file: /tmp/test-results/rspec.xml
   deploy:
     docker:
       - image: buildpack-deps:trusty
@@ -98,7 +100,6 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-
       - build
       - deploy:
           requires:
