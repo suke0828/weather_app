@@ -1,7 +1,4 @@
-version: 2.1
-
-orbs:
-  codecov: codecov/codecov@1.1.5
+version: 2
 
 jobs:
   build:
@@ -83,11 +80,8 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
-          path: /tmp/test-results
+          path: coverage
           destination: test-results
-
-      - codecov/upload:
-          file: coverage/index.html
 
   deploy:
     docker:
