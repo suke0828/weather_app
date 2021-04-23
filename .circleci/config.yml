@@ -85,8 +85,8 @@ jobs:
       - store_artifacts:
           path: coverage
       - codecov/upload:
-          token: CODECOV_TOKEN
           file: /tmp/test-results/rspec.xml
+          token: $CODECOV_TOKEN
   deploy:
     docker:
       - image: buildpack-deps:trusty
