@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@1.1.5
 
 jobs:
   build:
@@ -81,7 +84,9 @@ jobs:
           path: /tmp/test-results
       - store_artifacts:
           path: coverage
-
+      - codecov/upload:
+          token: CODECOV_TOKEN
+          file: /tmp/test-results/rspec.xml
   deploy:
     docker:
       - image: buildpack-deps:trusty
