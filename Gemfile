@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'httpclient'
 
+gem 'codecov', require: false, group: :test
 gem 'simplecov', require: false, group: :test
 
 group :development, :test do
