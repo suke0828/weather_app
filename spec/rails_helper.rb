@@ -1,5 +1,3 @@
-require 'simplecov'
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -78,10 +76,4 @@ RSpec.configure do |config|
 
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  if ENV['CIRCLE_ARTIFACTS']
-    dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
-    SimpleCov.coverage_dir(dir)
-  end
-
-  SimpleCov.start
 end
