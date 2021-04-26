@@ -10,67 +10,123 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
+				<!-- 北海道・東北 Link一覧 -->
 				<li class="nav-item dropdown py-2">
 					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						北海道・東北
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<div class="dropdown-item"><%= hokkaido_tohoku_area_link %></div>
+						<% all_prefectures.each do |prefecture| %>
+						<% case prefecture.id
+								when hokkaido_tohoku_area_id? %>
+						<li class="dropdown-item">
+							<%= link_to prefecture.name, prefecture_path(prefecture) %>
+						</li>
+						<% end %>
+						<% end %>
 					</ul>
 				</li>
+				<!-- 関東 Link一覧 -->
 				<li class="nav-item dropdown py-2">
-					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link dropdown-toggle" id="navbarDropdownTwo" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						関東
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<div class="dropdown-item"><%= kanto_area_link %></div>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownTwo">
+						<% all_prefectures.each do |prefecture| %>
+						<% case prefecture.id
+								when kanto_area_id %>
+						<li class="dropdown-item">
+							<%= link_to prefecture.name, prefecture_path(prefecture) %>
+						</li>
+						<% end %>
+						<% end %>
 					</ul>
 				</li>
+				<!-- 中部 Link一覧 -->
 				<li class="nav-item dropdown py-2">
-					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link dropdown-toggle" id="navbarDropdownThree" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						中部
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<div class="dropdown-item"><%= chubu_area_link %></div>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownThree">
+						<% all_prefectures.each do |prefecture| %>
+						<% case prefecture.id
+								when chubu_area_id %>
+						<li class="dropdown-item">
+							<%= link_to prefecture.name, prefecture_path(prefecture) %>
+						</li>
+						<% end %>
+						<% end %>
 					</ul>
 				</li>
+				<!-- 近畿 Link一覧 -->
 				<li class="nav-item dropdown py-2">
-					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link dropdown-toggle" id="navbarDropdownFour" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						近畿
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<div class="dropdown-item"><%= kinki_area_link %></div>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownFour">
+						<% all_prefectures.each do |prefecture| %>
+						<% case prefecture.id
+								when kinki_area_id %>
+						<li class="dropdown-item">
+							<%= link_to prefecture.name, prefecture_path(prefecture) %>
+						</li>
+						<% end %>
+						<% end %>
 					</ul>
 				</li>
+				<!-- 中国 Link一覧 -->
 				<li class="nav-item dropdown py-2">
-					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link dropdown-toggle" id="navbarDropdownFive" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						中国
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<div class="dropdown-item"><%= chugoku_area_link %></div>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownFive">
+						<% all_prefectures.each do |prefecture| %>
+						<% case prefecture.id
+								when chugoku_area_id %>
+						<li class="dropdown-item">
+							<%= link_to prefecture.name, prefecture_path(prefecture) %>
+						</li>
+						<% end %>
+						<% end %>
 					</ul>
 				</li>
+				<!-- 四国 Link一覧 -->
 				<li class="nav-item dropdown py-2">
-					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link dropdown-toggle" id="navbarDropdownSix" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						四国
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<div class="dropdown-item"><%= shikoku_area_link %></div>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownSix">
+						<% all_prefectures.each do |prefecture| %>
+						<% case prefecture.id
+								when shikoku_area_id %>
+						<li class="dropdown-item">
+							<%= link_to prefecture.name, prefecture_path(prefecture) %>
+						</li>
+						<% end %>
+						<% end %>
 					</ul>
 				</li>
+				<!-- 九州・沖縄 Link一覧 -->
 				<li class="nav-item dropdown py-2">
-					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+					<a class="nav-link dropdown-toggle" id="navbarDropdownSeven" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false">
 						九州
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<div class="dropdown-item"><%= kyushu_area_link %></div>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownSeven">
+						<% all_prefectures.each do |prefecture| %>
+						<% case prefecture.id
+								when kyushu_area_id %>
+						<li class="dropdown-item">
+							<%= link_to prefecture.name, prefecture_path(prefecture) %>
+						</li>
+						<% end %>
+						<% end %>
 					</ul>
 				</li>
 			</ul>
