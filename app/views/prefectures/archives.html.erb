@@ -24,7 +24,7 @@
 						<tr style="color: <%= weather_color(archive)%>">
 							<td class="border-left"><%= l archive.dated_on, format: :short %></td>
 							<td class="border-none"><%= archive.weather %></td>
-							<td class="border-none"><img src="http://openweathermap.org/img/w/<%=archive.weather_icon%>.png">
+							<td class="border-none"><img alt="weather" src="https://openweathermap.org/img/w/<%=archive.weather_icon%>.png">
 							</td>
 							<td class="border-right"><%= archive.temperature %>℃</td>
 						</tr>
