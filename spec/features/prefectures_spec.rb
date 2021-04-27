@@ -53,7 +53,7 @@ RSpec.describe 'Prefectures' do
     it 'display weather_icon image' do
       visit prefecture_path city.id
       expect(page).to have_selector(
-        "img[src$='http://openweathermap.org/img/w/#{weather_api.weather_icon}.png']"
+        "img[src$='https://openweathermap.org/img/w/#{weather_api.weather_icon}.png']"
       )
     end
 

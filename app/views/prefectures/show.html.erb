@@ -19,7 +19,7 @@
 						<tr style="color: <%= weather_color(weather_report)%>">
 							<td class="border-left"><%= l weather_report.dated_on, format: :short %></td>
 							<td class="border-none"><%= weather_report.weather %></td>
-							<td class="border-none"><img src="http://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png">
+							<td class="border-none"><img alt="weather" src="https://openweathermap.org/img/w/<%=weather_report.weather_icon%>.png">
 							</td>
 							<td class="border-right"><%= weather_report.temperature %>℃</td>
 						</tr>
