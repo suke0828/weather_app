@@ -79,6 +79,11 @@ a {
   }
 }
 
+.background-image {
+  background-image: image-url('clouds.jpeg');
+  background-size: cover;
+}
+
 .table {
   width: 100%;
   margin: 1px;

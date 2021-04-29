@@ -1,23 +1,27 @@
 <%= provide(:title, 'about') %>
 <div class="container-fluid">
-	<ol class="breadcrumb mb-4">
-		<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
-		<li class="breadcrumb-item"><%= link_to 'About', about_path %></li>
-	</ol>
-</div>
+	<div class="card">
+		<div class="card-body">
+			<ol class="breadcrumb mb-4">
+				<li class="breadcrumb-item"><%= link_to '都道府県', prefectures_path %></li>
+				<li class="breadcrumb-item"><%= link_to 'About', about_path %></li>
+			</ol>
+		</div>
 
-<div class="container">
-	<h1>お天気HISTORYとは？</h1>
-	<hr />
-	<h2 class="mt-5">概要</h2>
-	<hr />
-	<h3 class="mt-3">全国の天気のログを記録します</h3>
-	<h3 class="mt-3">開始日 2021/03/13 - </h3>
-	<h2 class="mt-5">使用API</h2>
-	<hr />
-	<h3 class="mt-3">・OpenWeather</h3>
-	<h2 class="mt-5">注意事項</h2>
-	<hr />
-	<h3 class="mt-3">日本時間の正午12時に更新されます</h3>
-	<h3 class="mb-5">各都道府県の県庁所在地のロケーションを参考に天気情報を取得しています</h3>
+		<div class="container">
+			<h1>お天気HISTORYとは？</h1>
+			<hr />
+			<h2 class="mt-5">概要</h2>
+			<hr />
+			<h3 class="mt-3">全国の天気のログを記録します</h3>
+			<h3 class="mt-3">開始日 2021/03/13 - </h3>
+			<h2 class="mt-5">使用API</h2>
+			<hr />
+			<h3 class="mt-3">・OpenWeather</h3>
+			<h2 class="mt-5">注意事項</h2>
+			<hr />
+			<h3 class="mt-3">日本時間の正午12時に更新されます</h3>
+			<h3 class="mb-5">各都道府県の県庁所在地のロケーションを参考に天気情報を取得しています</h3>
+		</div>
+	</div>
 </div>

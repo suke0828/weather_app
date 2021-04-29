@@ -15,4 +15,11 @@ RSpec.describe 'Static_pages' do
       expect(page).to have_selector('li[class=breadcrumb-item]', text: 'About')
     end
   end
+
+  describe 'Display background-image' do
+    it 'background-image displayed index page' do
+      visit prefectures_path
+      expect(page).to have_css('.background-image')
+    end
+  end
 end
