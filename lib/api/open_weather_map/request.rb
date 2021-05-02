@@ -19,7 +19,7 @@ module Api
         JSON.parse(request.body)
       end
 
-        # attrsにはlib/tasks/open_weather_api.rakeの(response['daily'])が入る
+      # attrsにはlib/tasks/open_weather_api.rakeの(response['daily'])が入る
       def self.attributes_for(attrs)
         date = Time.zone.at(attrs[0]['dt'])
         {
