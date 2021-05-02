@@ -4,13 +4,13 @@ module Api
       attr_accessor :query
 
       def initialize(lat, lon)
-        year_twenty_twenty_one_April_30 = '1619751600'
+        year_twenty_twenty_one_april30 = '1619751600'
         @query = {
           lat: lat,
           lon: lon,
           units: 'metric',
           lang: 'ja',
-          dt: year_twenty_twenty_one_April_30,
+          dt: year_twenty_twenty_one_april30,
           appid: ENV['WEATHER_API_KEY']
         }
       end
