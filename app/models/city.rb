@@ -2,7 +2,7 @@ class City < ApplicationRecord
   has_many :weather_apis, dependent: :destroy
 
   def divide_monthly
-    days_group = weather_apis.pluck(:created_at).group_by do |timezone|
+    days_group = weather_apis.pluck(:dated_on).group_by do |timezone|
       timezone.strftime('%Y%m')
     end
     days_group.map { |k, v| [k, v.size] }.sort.reverse
@@ -13,7 +13,7 @@ class City < ApplicationRecord
   # sortを実行
 
   def divide_year
-    days_group = weather_apis.pluck(:created_at).group_by do |timezone|
+    days_group = weather_apis.pluck(:dated_on).group_by do |timezone|
       timezone.strftime('%Y')
     end
     days_group.map { |k, v| [k, v] }.sort.reverse
