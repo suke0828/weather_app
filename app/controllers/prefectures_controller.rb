@@ -18,6 +18,6 @@ class PrefecturesController < ApplicationController
   end
 
   def archives
-    prefecture.weather_apis.where(dated_on: year_monthly)
+    prefecture.weather_apis.where(dated_on: months_and_years)
   end
 end
