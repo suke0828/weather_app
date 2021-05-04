@@ -39,9 +39,16 @@ RSpec.describe 'Prefectures', type: :request do
       expect(response.body).not_to include('No Contents')
     end
 
+    it ' gets archive contents The end of the month' do
+      FactoryBot.create(:weather_api, dated_on: '2021/04/30 02:00:00')
+      get prefecture_archive_path city.id, yyyymm: '2021/04/01 02:00:00'
+      expect(response.body).to include('04/30')
+      expect(response.body).not_to include('No Contents')
+    end
+
     it 'not archive contents' do
       get prefecture_archive_path city.id, yyyymm: '2021/02/01 02:00:00'
-      expect(response.body).to include('2021-02-01..2021-02-28 No Contents')
+      expect(response.body).to include('2021-02-01..2021-03-01 No Contents')
       expect(response.body).not_to include('1days')
     end
 
