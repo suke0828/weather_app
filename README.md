@@ -50,7 +50,7 @@
 [lib/tasks/open_weather_api.rake](lib/tasks/open_weather_api.rake)のrake taskでapiを叩いて天気情報を取得し、DBに保存</br>
 
 ## 注意事項
-・記録開始日は 2021/03/13 ~ </br>
+・データは約7ヶ月でリセットされます</br>
 ・日本時間の正午12時に更新されます</br>
 ・各都道府県の県庁所在地のロケーションを参考に天気情報を取得しています
 
