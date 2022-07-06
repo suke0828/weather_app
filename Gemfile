@@ -33,7 +33,7 @@ gem 'httpclient'
 gem 'codecov', require: false, group: :test
 gem 'simplecov', require: false, group: :test
 
-gem "font-awesome-sass", "~> 6.1.1"
+gem 'font-awesome-sass', '~> 6.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
