@@ -112,6 +112,15 @@ RSpec.describe 'Prefectures' do
       visit prefectures_path
       expect(page).to have_css('.footer')
     end
+
+    it 'github icon link' do
+      visit prefectures_path
+      expect(page).to have_css('.footer')
+      expect(page).to have_css('.fa-github')
+      link = find('.github')
+      github = 'https://github.com/suke0828/weather_app'
+      expect(link[:href]).to eq github
+    end
   end
 
   describe 'Display bread crumb' do
